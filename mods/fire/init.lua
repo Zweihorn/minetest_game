@@ -2,6 +2,11 @@
 
 fire = {}
 
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
+
 -- 'Enable fire' setting
 
 local fire_enabled = minetest.settings:get_bool("enable_fire")
@@ -82,7 +87,7 @@ minetest.register_node("fire:basic_flame", {
 })
 
 minetest.register_node("fire:permanent_flame", {
-	description = "Permanent Flame",
+	description = S("Permanent Flame"),
 	drawtype = "firelike",
 	tiles = {
 		{
@@ -113,7 +118,7 @@ minetest.register_node("fire:permanent_flame", {
 -- Flint and steel
 
 minetest.register_tool("fire:flint_and_steel", {
-	description = "Flint and Steel",
+	description = S("Flint and Steel"),
 	inventory_image = "fire_flint_steel.png",
 	sound = {breaks = "default_tool_breaks"},
 
@@ -320,7 +325,7 @@ if fire_enabled then
 		interval = 7,
 		chance = 12,
 		catch_up = false,
-		action = function(pos)
+		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"air"})
 			if p then
 				minetest.set_node(p, {name = "fire:basic_flame"})
@@ -337,18 +342,17 @@ if fire_enabled then
 		interval = 5,
 		chance = 18,
 		catch_up = false,
-		action = function(pos)
+		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"group:flammable"})
-			if not p then
-				return
-			end
-			local flammable_node = minetest.get_node(p)
-			local def = minetest.registered_nodes[flammable_node.name]
-			if def.on_burn then
-				def.on_burn(p)
-			else
-				minetest.remove_node(p)
-				minetest.check_for_falling(p)
+			if p then
+				local flammable_node = minetest.get_node(p)
+				local def = minetest.registered_nodes[flammable_node.name]
+				if def.on_burn then
+					def.on_burn(p)
+				else
+					minetest.remove_node(p)
+					minetest.check_for_falling(p)
+				end
 			end
 		end,
 	})

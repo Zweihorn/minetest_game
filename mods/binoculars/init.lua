@@ -1,6 +1,12 @@
+-- binoculars/init.lua
+
 -- Mod global namespace
 
 binoculars = {}
+
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
 
 
 -- Detect creative mod
@@ -54,7 +60,7 @@ minetest.after(4.7, cyclic_update)
 -- Binoculars item
 
 minetest.register_craftitem("binoculars:binoculars", {
-	description = "Binoculars\nUse with 'Zoom' key",
+	description = S("Binoculars\nUse with 'Zoom' key"),
 	inventory_image = "binoculars_binoculars.png",
 	stack_max = 1,
 

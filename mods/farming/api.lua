@@ -1,3 +1,7 @@
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
 
 -- Wear out hoes, place soil
 -- TODO Ignore group:flower
@@ -78,7 +82,7 @@ farming.register_hoe = function(name, def)
 	end
 	-- Check def table
 	if def.description == nil then
-		def.description = "Hoe"
+		def.description = S("Hoe")
 	end
 	if def.inventory_image == nil then
 		def.inventory_image = "unknown_item.png"
@@ -251,7 +255,7 @@ farming.register_plant = function(name, def)
 
 	-- Check def table
 	if not def.description then
-		def.description = "Seed"
+		def.description = S("Seed")
 	end
 	if not def.inventory_image then
 		def.inventory_image = "unknown_item.png"

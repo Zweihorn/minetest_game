@@ -1,5 +1,9 @@
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
 farming.register_hoe(":farming:hoe_wood", {
-	description = "Wooden Hoe",
+	description = S("Wooden Hoe"),
 	inventory_image = "farming_tool_woodhoe.png",
 	max_uses = 30,
 	material = "group:wood",
@@ -7,14 +11,14 @@ farming.register_hoe(":farming:hoe_wood", {
 })
 
 farming.register_hoe(":farming:hoe_stone", {
-	description = "Stone Hoe",
+	description = S("Stone Hoe"),
 	inventory_image = "farming_tool_stonehoe.png",
 	max_uses = 90,
 	material = "group:stone"
 })
 
 farming.register_hoe(":farming:hoe_steel", {
-	description = "Steel Hoe",
+	description = S("Steel Hoe"),
 	inventory_image = "farming_tool_steelhoe.png",
 	max_uses = 500,
 	material = "default:steel_ingot"
@@ -26,21 +30,21 @@ farming.register_hoe(":farming:hoe_steel", {
 -- release.
 
 farming.register_hoe(":farming:hoe_bronze", {
-	description = "Bronze Hoe",
+	description = S("Bronze Hoe"),
 	inventory_image = "farming_tool_bronzehoe.png",
 	max_uses = 220,
 	groups = {not_in_creative_inventory = 1},
 })
 
 farming.register_hoe(":farming:hoe_mese", {
-	description = "Mese Hoe",
+	description = S("Mese Hoe"),
 	inventory_image = "farming_tool_mesehoe.png",
 	max_uses = 350,
 	groups = {not_in_creative_inventory = 1},
 })
 
 farming.register_hoe(":farming:hoe_diamond", {
-	description = "Diamond Hoe",
+	description = S("Diamond Hoe"),
 	inventory_image = "farming_tool_diamondhoe.png",
 	max_uses = 500,
 	groups = {not_in_creative_inventory = 1},

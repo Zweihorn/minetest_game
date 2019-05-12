@@ -1,5 +1,10 @@
 walls = {}
 
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
+
 walls.register = function(wall_name, wall_desc, wall_texture_table, wall_mat, wall_sounds)
 	--make wall_texture_table paramenter backwards compatible for mods passing single texture
 	if type(wall_texture_table) ~= "table" then
@@ -39,12 +44,12 @@ walls.register = function(wall_name, wall_desc, wall_texture_table, wall_mat, wa
 
 end
 
-walls.register("walls:cobble", "Cobblestone Wall", {"default_cobble.png"},
+walls.register("walls:cobble", S("Cobblestone Wall"), {"default_cobble.png"},
 		"default:cobble", default.node_sound_stone_defaults())
 
-walls.register("walls:mossycobble", "Mossy Cobblestone Wall", {"default_mossycobble.png"},
+walls.register("walls:mossycobble", S("Mossy Cobblestone Wall"), {"default_mossycobble.png"},
 		"default:mossycobble", default.node_sound_stone_defaults())
 
-walls.register("walls:desertcobble", "Desert Cobblestone Wall", {"default_desert_cobble.png"},
+walls.register("walls:desertcobble", S("Desert Cobblestone Wall"), {"default_desert_cobble.png"},
 		"default:desert_cobble", default.node_sound_stone_defaults())
 

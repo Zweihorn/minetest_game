@@ -1,3 +1,10 @@
+-- creative/init.lua
+
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
+
 creative = {}
 
 local function update_sfinv(name)
@@ -14,7 +21,7 @@ local function update_sfinv(name)
 end
 
 minetest.register_privilege("creative", {
-	description = "Allow player to use creative inventory",
+	description = S("Allow player to use creative inventory"),
 	give_to_singleplayer = false,
 	give_to_admin = false,
 	on_grant = update_sfinv,

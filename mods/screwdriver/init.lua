@@ -1,5 +1,10 @@
 screwdriver = {}
 
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
+
 screwdriver.ROTATE_FACE = 1
 screwdriver.ROTATE_AXIS = 2
 screwdriver.disallow = function(pos, node, user, mode, new_param2)
@@ -144,7 +149,7 @@ end
 
 -- Screwdriver
 minetest.register_tool("screwdriver:screwdriver", {
-	description = "Screwdriver (left-click rotates face, right-click rotates axis)",
+	description = S("Screwdriver (left-click rotates face, right-click rotates axis)"),
 	inventory_image = "screwdriver.png",
 	on_use = function(itemstack, user, pointed_thing)
 		screwdriver.handler(itemstack, user, pointed_thing, screwdriver.ROTATE_FACE, 200)

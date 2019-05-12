@@ -1,6 +1,11 @@
 -- Minetest 0.4 mod: vessels
 -- See README.txt for licensing and other information.
 
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
+
 local vessels_shelf_formspec =
 	"size[8,7;]" ..
 	"list[context;vessels;0,0.3;8,2;]" ..
@@ -30,7 +35,7 @@ local function get_vessels_shelf_formspec(inv)
 end
 
 minetest.register_node("vessels:shelf", {
-	description = "Vessels Shelf",
+	description = S("Vessels Shelf"),
 	tiles = {"default_wood.png", "default_wood.png", "default_wood.png",
 		"default_wood.png", "vessels_shelf.png", "vessels_shelf.png"},
 	paramtype2 = "facedir",
@@ -91,7 +96,7 @@ minetest.register_craft({
 })
 
 minetest.register_node("vessels:glass_bottle", {
-	description = "Empty Glass Bottle",
+	description = S("Empty Glass Bottle"),
 	drawtype = "plantlike",
 	tiles = {"vessels_glass_bottle.png"},
 	inventory_image = "vessels_glass_bottle.png",
@@ -117,7 +122,7 @@ minetest.register_craft( {
 })
 
 minetest.register_node("vessels:drinking_glass", {
-	description = "Empty Drinking Glass",
+	description = S("Empty Drinking Glass"),
 	drawtype = "plantlike",
 	tiles = {"vessels_drinking_glass.png"},
 	inventory_image = "vessels_drinking_glass_inv.png",
@@ -143,7 +148,7 @@ minetest.register_craft( {
 })
 
 minetest.register_node("vessels:steel_bottle", {
-	description = "Empty Heavy Steel Bottle",
+	description = S("Empty Heavy Steel Bottle"),
 	drawtype = "plantlike",
 	tiles = {"vessels_steel_bottle.png"},
 	inventory_image = "vessels_steel_bottle.png",
@@ -172,7 +177,7 @@ minetest.register_craft( {
 -- Glass and steel recycling
 
 minetest.register_craftitem("vessels:glass_fragments", {
-	description = "Glass Fragments",
+	description = S("Glass Fragments"),
 	inventory_image = "vessels_glass_fragments.png",
 })
 

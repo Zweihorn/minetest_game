@@ -1,0 +1,6 @@
+Game internationalization library.
+This mod provides a way to internationalize/localize the default game
+mods to other languages in an easy way.  It was derived from intllib
+but instead is aimed at the default minetest_game mod tree only.
+One should make use of inttlib for external mods without interference.
+See the README file for details.

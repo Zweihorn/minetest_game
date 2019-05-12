@@ -1,5 +1,11 @@
+-- carts/rails.lua
+
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
 carts:register_rail("carts:rail", {
-	description = "Rail",
+	description = S("Rail"),
 	tiles = {
 		"carts_rail_straight.png", "carts_rail_curved.png",
 		"carts_rail_t_junction.png", "carts_rail_crossing.png"
@@ -22,7 +28,7 @@ minetest.register_alias("default:rail", "carts:rail")
 
 
 carts:register_rail("carts:powerrail", {
-	description = "Powered Rail",
+	description = S("Powered Rail"),
 	tiles = {
 		"carts_rail_straight_pwr.png", "carts_rail_curved_pwr.png",
 		"carts_rail_t_junction_pwr.png", "carts_rail_crossing_pwr.png"
@@ -41,7 +47,7 @@ minetest.register_craft({
 
 
 carts:register_rail("carts:brakerail", {
-	description = "Brake Rail",
+	description = S("Brake Rail"),
 	tiles = {
 		"carts_rail_straight_brk.png", "carts_rail_curved_brk.png",
 		"carts_rail_t_junction_brk.png", "carts_rail_crossing_brk.png"

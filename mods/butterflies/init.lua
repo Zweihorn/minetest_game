@@ -1,8 +1,14 @@
+-- butrerflies/init.lua
+
+-- Load support for game_intllib.
+local MP = minetest.get_modpath(minetest.get_current_modname())
+local S, NS = dofile(MP .. "/gintllib.lua")
+ 
 -- register butterflies
 local butter_list = {
-	{"white", "White"},
-	{"red", "Red"},
-	{"violet", "Violet"}
+	{"white", S("White")},
+	{"red", S("Red")},
+	{"violet", S("Violet")}
 }
 
 for i in ipairs (butter_list) do
@@ -10,7 +16,7 @@ for i in ipairs (butter_list) do
 	local desc = butter_list[i][2]
 
 	minetest.register_node("butterflies:butterfly_"..name, {
-		description = desc.." Butterfly",
+		description = S("@1 Butterfly", desc),
 		drawtype = "plantlike",
 		tiles = {{
 			name = "butterflies_butterfly_"..name.."_animated.png",
@@ -56,7 +62,7 @@ for i in ipairs (butter_list) do
 	})
 
 	minetest.register_node("butterflies:hidden_butterfly_"..name, {
-		description = "Hidden "..desc.." Butterfly",
+		description = S("Hidden @1 Butterfly", desc),
 		drawtype = "airlike",
 		inventory_image = "insects_butterfly_"..name..".png",
 		wield_image =  "insects_butterfly_"..name..".png",
