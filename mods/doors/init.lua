@@ -1,3 +1,5 @@
+-- doors/init.lua
+
 -- our API object
 doors = {}
 
@@ -647,10 +649,14 @@ function doors.register_trapdoor(name, def)
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -6/16, 0.5}
 	}
-	def_closed.tiles = {def.tile_front,
-			def.tile_front .. '^[transformFY',
-			def.tile_side, def.tile_side,
-			def.tile_side, def.tile_side}
+	def_closed.tiles = {
+		def.tile_front,
+		def.tile_front .. '^[transformFY',
+		def.tile_side,
+		def.tile_side,
+		def.tile_side,
+		def.tile_side
+	}
 
 	def_opened.node_box = {
 		type = "fixed",
@@ -660,11 +666,14 @@ function doors.register_trapdoor(name, def)
 		type = "fixed",
 		fixed = {-0.5, -0.5, 6/16, 0.5, 0.5, 0.5}
 	}
-	def_opened.tiles = {def.tile_side, def.tile_side,
-			def.tile_side .. '^[transform3',
-			def.tile_side .. '^[transform1',
-			def.tile_front .. '^[transform46',
-			def.tile_front .. '^[transform6'}
+	def_opened.tiles = {
+		def.tile_side,
+		def.tile_side .. '^[transform2',
+		def.tile_side .. '^[transform3',
+		def.tile_side .. '^[transform1',
+		def.tile_front .. '^[transform46',
+		def.tile_front .. '^[transform6'
+	}
 
 	def_opened.drop = name_closed
 	def_opened.groups.not_in_creative_inventory = 1
@@ -786,8 +795,8 @@ function doors.register_fencegate(name, def)
 	minetest.register_craft({
 		output = name .. "_closed",
 		recipe = {
-			{"default:stick", def.material, "default:stick"},
-			{"default:stick", def.material, "default:stick"}
+			{"group:stick", def.material, "group:stick"},
+			{"group:stick", def.material, "group:stick"}
 		}
 	})
 end
